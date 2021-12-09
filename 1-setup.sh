@@ -115,6 +115,9 @@ elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
 elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa --needed --noconfirm
 fi
+
+echo -ne "press something to continue: "
+read testoien
 echo -ne "
 -------------------------------------------------------------------------
                     Adding User
