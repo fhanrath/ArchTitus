@@ -13,10 +13,6 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 source /root/$SCRIPTHOME/setup.conf
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 
@@ -24,9 +20,6 @@ echo -ne "
 "
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
-
-echo -ne "press something to continue: "
-read testoien
 echo -ne "
 -------------------------------------------------------------------------
                     Setting up mirrors for optimal download 
@@ -36,11 +29,7 @@ pacman -S --noconfirm pacman-contrib curl
 pacman -S --noconfirm reflector rsync
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
-echo -ne "press something to continue: "
-read testoien
-
 nc=$(grep -c ^processor /proc/cpuinfo)
-
 echo -ne "
 -------------------------------------------------------------------------
                     You have " $nc" cores. And
@@ -53,10 +42,6 @@ if [[  $TOTALMEM -gt 8000000 ]]; then
 sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 fi
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Setup Language to US and set locale
@@ -82,11 +67,6 @@ sed -i 's/^#Para/Para/' /etc/pacman.conf
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
-
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Base System  
@@ -113,10 +93,6 @@ elif lscpu | grep -E "AuthenticAMD"; then
     pacman -S --noconfirm amd-ucode
     proc_ucode=amd-ucode.img
 fi
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Graphics Drivers
@@ -133,11 +109,6 @@ elif lspci | grep -E "Integrated Graphics Controller"; then
 elif lspci | grep -E "Intel Corporation UHD"; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa --needed --noconfirm
 fi
-
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Adding User
