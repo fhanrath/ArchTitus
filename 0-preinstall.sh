@@ -84,7 +84,6 @@ mountallsubvol () {
 echo -ne "press something to continue: "
 read testoien
 }
-}
 if [[ "${DISK}" =~ "nvme" ]]; then
     if [[ "${FS}" == "btrfs" ]]; then
         mkfs.vfat -F32 -n "EFIBOOT" ${DISK}p2
