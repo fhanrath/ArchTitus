@@ -23,10 +23,6 @@ echo -ne "
 
 Setting up mirrors for optimal download
 "
-
-echo -ne "press something to continue: "
-read testoien
-
 source setup.conf
 iso=$(curl -4 ifconfig.co/country-iso)
 timedatectl set-ntp true
