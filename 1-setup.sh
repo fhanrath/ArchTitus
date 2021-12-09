@@ -13,6 +13,10 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 source $SCRIPTHOME/setup.conf
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 
