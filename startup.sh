@@ -85,6 +85,7 @@ Please select key board layout from this list
     -ua
     -uk
     -us
+    -us-intl
 
 "
 read -p "Your key boards layout:" keymap
