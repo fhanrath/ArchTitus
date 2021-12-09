@@ -13,6 +13,8 @@ setfont ter-v22b
 
 echo -n "${luks_password}" | cryptsetup open ${DISK}p3 ROOT -
 
+mkdir /mnt
+
 mount -o ${mountoptions},subvol=@ /dev/mapper/ROOT /mnt
 
 mountallsubvol
