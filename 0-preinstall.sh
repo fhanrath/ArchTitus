@@ -145,6 +145,9 @@ mkdir /mnt/boot
 mkdir /mnt/boot/efi
 mount -t vfat -L EFIBOOT /mnt/boot/
 
+echo -ne "press something to continue: "
+read testoien
+
 if ! grep -qs '/mnt' /proc/mounts; then
     echo "Drive is not mounted can not continue"
     echo "Rebooting in 3 Seconds ..." && sleep 1
