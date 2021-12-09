@@ -143,9 +143,6 @@ umount /mnt
 mount -t btrfs -o subvol=@ -L ROOT /mnt
 fi
 
-echo -ne "press something to continue: "
-read testoien
-
 # mount target
 mkdir /mnt/boot
 mkdir /mnt/boot/efi
