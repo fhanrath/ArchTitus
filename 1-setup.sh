@@ -24,6 +24,9 @@ echo -ne "
 "
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
+
+echo -ne "press something to continue: "
+read testoien
 echo -ne "
 -------------------------------------------------------------------------
                     Setting up mirrors for optimal download 
@@ -32,6 +35,9 @@ echo -ne "
 pacman -S --noconfirm pacman-contrib curl
 pacman -S --noconfirm reflector rsync
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+
+echo -ne "press something to continue: "
+read testoien
 
 nc=$(grep -c ^processor /proc/cpuinfo)
 
@@ -47,6 +53,9 @@ if [[  $TOTALMEM -gt 8000000 ]]; then
 sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 fi
+
+echo -ne "press something to continue: "
+read testoien
 
 echo -ne "
 -------------------------------------------------------------------------
