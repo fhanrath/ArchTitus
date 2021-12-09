@@ -72,7 +72,7 @@ echo -ne "
                     Installing Base System  
 -------------------------------------------------------------------------
 "
-/root/$SCRIPTHOME/pkg-files/pacman-pkgs.txt | while read line 
+cat /root/$SCRIPTHOME/pkg-files/pacman-pkgs.txt | while read line 
 do
    sudo pacman -S --needed $line
 done
