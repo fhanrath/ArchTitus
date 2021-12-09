@@ -74,7 +74,8 @@ echo -ne "
 "
 cat /root/$SCRIPTHOME/pkg-files/pacman-pkgs.txt | while read line 
 do
-   sudo pacman -S --noconfirm --needed $line
+    echo "INSTALLING: ${line}"
+   sudo pacman -S --noconfirm --needed ${line}
 done
 
 
