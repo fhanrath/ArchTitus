@@ -74,7 +74,7 @@ echo -ne "
 "
 cat /root/$SCRIPTHOME/pkg-files/pacman-pkgs.txt | while read line 
 do
-   sudo pacman -S --needed $line
+   sudo pacman -S --noconfirm --needed $line
 done
 
 
