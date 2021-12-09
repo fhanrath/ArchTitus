@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 source setup.conf
 
 mountallsubvol () {
@@ -18,3 +21,5 @@ mkdir /mnt
 mount -o ${mountoptions},subvol=@ /dev/mapper/ROOT /mnt
 
 mountallsubvol
+
+cp -R ${SCRIPT_DIR} /mnt/root/${SCRIPTHOME}
