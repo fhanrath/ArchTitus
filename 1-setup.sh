@@ -123,9 +123,14 @@ if [[ ${FS} == "luks" ]]; then
 # Making sure to edit mkinitcpio conf if luks is selected
 # add encrypt in mkinitcpio.conf before filesystems in hooks
     sed -i 's/filesystems/encrypt filesystems/g' /etc/mkinitcpio.conf
+    #check if keymap is here too
 # making mkinitcpio with linux kernel
     mkinitcpio -p linux
 fi
+
+# add fonts firacode mono nerd for x and ? for tty
+# https://www.behova.net/install-nerd-font-on-arch-linux/
+# CONSOLEFONT="ter-114f" in /etc/rc.conf ? or ter-v22b
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 2-user.sh
