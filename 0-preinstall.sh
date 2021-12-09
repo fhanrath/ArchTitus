@@ -70,6 +70,9 @@ createsubvolumes () {
     btrfs subvolume create /mnt/@var
     btrfs subvolume create /mnt/@tmp
     btrfs subvolume create /mnt/@.snapshots
+
+echo -ne "press something to continue: "
+read testoien
 }
 
 mountallsubvol () {
