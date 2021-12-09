@@ -11,7 +11,7 @@ echo -ne "
                     Automated Arch Linux Installer
 -------------------------------------------------------------------------
 "
-
+source $SCRIPTHOME/setup.conf
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 
@@ -19,7 +19,6 @@ echo -ne "
 "
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
-
 echo -ne "
 -------------------------------------------------------------------------
                     Setting up mirrors for optimal download 
