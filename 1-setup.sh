@@ -11,11 +11,6 @@ echo -ne "
                     Automated Arch Linux Installer
 -------------------------------------------------------------------------
 "
-source setup.conf
-
-
-echo -ne "press something to continue: "
-read testoien
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -24,10 +19,6 @@ echo -ne "
 "
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
-
-
-echo -ne "press something to continue: "
-read testoien
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -39,10 +30,6 @@ pacman -S --noconfirm reflector rsync
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 nc=$(grep -c ^processor /proc/cpuinfo)
-
-
-echo -ne "press something to continue: "
-read testoien
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -57,13 +44,11 @@ sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 fi
 
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
-                    Setup Language to US and set locale  
+                    Setup Language to US and set locale
+                         new timezone: ${timezone}
+                           new keymap: ${keymap}
 -------------------------------------------------------------------------
 "
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen

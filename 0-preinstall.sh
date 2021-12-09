@@ -22,7 +22,6 @@ echo -ne "
 
 Setting up mirrors for optimal download
 "
-source setup.conf
 iso=$(curl -4 ifconfig.co/country-iso)
 timedatectl set-ntp true
 pacman -S --noconfirm pacman-contrib terminus-font
@@ -145,9 +144,6 @@ mkdir /mnt/boot
 mkdir /mnt/boot/efi
 mount -t vfat -L EFIBOOT /mnt/boot/
 
-echo -ne "press something to continue: "
-read testoien
-
 if ! grep -qs '/mnt' /proc/mounts; then
     echo "Drive is not mounted can not continue"
     echo "Rebooting in 3 Seconds ..." && sleep 1
@@ -196,6 +192,3 @@ echo -ne "
                     SYSTEM READY FOR 1-setup.sh
 -------------------------------------------------------------------------
 "
-
-echo -ne "press something to continue: "
-read testoien
