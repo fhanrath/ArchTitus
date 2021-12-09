@@ -83,7 +83,7 @@ echo -ne "
                     Installing Base System  
 -------------------------------------------------------------------------
 "
-sudo pacman -S --noconfirm --needed - < /pkg-files/pacman-pkgs.txt
+sudo pacman -S --noconfirm --needed - < /root/$SCRIPTHOME/pkg-files/pacman-pkgs.txt
 
 
 echo -ne "press something to continue: "
