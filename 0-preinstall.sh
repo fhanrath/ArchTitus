@@ -169,16 +169,6 @@ cp -R ${SCRIPT_DIR} /mnt/root/${SCRIPTHOME}
 cp /etc/pacman.d/mirrorlist /mnt/etc/pacman.d/mirrorlist
 echo -ne "
 -------------------------------------------------------------------------
-                    Install custom layout
--------------------------------------------------------------------------
-"
-cp ${SCRIPT_DIR}/keymap/us-intl.map.gz /mnt/usr/share/kbd/keymaps/i386/us-intl.map.gz
-
-
-echo -ne "press something to continue: "
-read testoien
-echo -ne "
--------------------------------------------------------------------------
                     GRUB BIOS Bootloader Install & Check
 -------------------------------------------------------------------------
 "
