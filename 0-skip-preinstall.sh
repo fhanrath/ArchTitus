@@ -1,4 +1,4 @@
-
+source setup.conf
 
 mountallsubvol () {
     mount -o ${mountoptions},subvol=@home /dev/mapper/ROOT /mnt/home
