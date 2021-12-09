@@ -12,6 +12,11 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 source setup.conf
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 
@@ -19,6 +24,11 @@ echo -ne "
 "
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Setting up mirrors for optimal download 
@@ -29,6 +39,11 @@ pacman -S --noconfirm reflector rsync
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 nc=$(grep -c ^processor /proc/cpuinfo)
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     You have " $nc" cores. And
@@ -41,6 +56,11 @@ if [[  $TOTALMEM -gt 8000000 ]]; then
 sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 fi
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Setup Language to US and set locale  
@@ -64,12 +84,22 @@ sed -i 's/^#Para/Para/' /etc/pacman.conf
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Base System  
 -------------------------------------------------------------------------
 "
 sudo pacman -S --noconfirm --needed - < /pkg-files/pacman-pkgs.txt
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Microcode
@@ -89,6 +119,11 @@ case "$proc_type" in
 		proc_ucode=amd-ucode.img
 		;;
 esac
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Graphics Drivers
@@ -103,6 +138,11 @@ elif lspci | grep -E "Radeon"; then
 elif lspci | grep -E "Integrated Graphics Controller"; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils --needed --noconfirm
 fi
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     Adding User
@@ -126,6 +166,11 @@ if [[ ${FS} == "luks" ]]; then
 # making mkinitcpio with linux kernel
     mkinitcpio -p linux
 fi
+
+
+echo -ne "press something to continue: "
+read testoien
+
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 2-user.sh

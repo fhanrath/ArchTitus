@@ -196,3 +196,6 @@ echo -ne "
                     SYSTEM READY FOR 1-setup.sh
 -------------------------------------------------------------------------
 "
+
+echo -ne "press something to continue: "
+read testoien

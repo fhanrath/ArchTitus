@@ -19,6 +19,11 @@ cd ~
 git clone "https://aur.archlinux.org/yay.git"
 cd ${HOME}/yay
 makepkg -si --noconfirm
+
+
+echo -ne "press something to continue: "
+read testoien
+
 cd ~
 touch "$HOME/.cache/zshhistory"
 git clone "https://github.com/ChrisTitusTech/zsh"
@@ -33,6 +38,11 @@ pip install konsave
 konsave -i $HOME/$SCRIPTHOME/kde.knsv
 sleep 1
 konsave -a kde
+
+
+
+echo -ne "press something to continue: "
+read testoien
 
 echo -ne "
 -------------------------------------------------------------------------
