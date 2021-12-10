@@ -37,11 +37,6 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 systemctl enable sddm.service
-
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Setting up SDDM Theme
@@ -51,12 +46,6 @@ cat <<EOF > /etc/sddm.conf
 [Theme]
 Current=Nordic
 EOF
-
-
-echo -ne "press something to continue: "
-read testoien
-
-
 echo -ne "
 -------------------------------------------------------------------------
                     Enabling Essential Services
@@ -69,11 +58,6 @@ systemctl disable dhcpcd.service
 systemctl stop dhcpcd.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth
-
-
-echo -ne "press something to continue: "
-read testoien
-
 echo -ne "
 -------------------------------------------------------------------------
                     Cleaning 
