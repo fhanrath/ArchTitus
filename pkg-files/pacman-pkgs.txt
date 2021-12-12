@@ -102,6 +102,7 @@ lm_sensors
 starship
 otf-ipafont
 wqy-microhei
+filezilla
 gnome
 gnome-shell-extensions
 gnome-tweaks
