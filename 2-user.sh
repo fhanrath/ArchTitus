@@ -26,7 +26,7 @@ echo -ne "
 mkdir ~/build
 cd ~/build
 git clone "https://aur.archlinux.org/paru.git"
-cd ~/paru
+cd ~/build/paru
 rustup toolchain install stable
 makepkg -si --noconfirm
 cd ~/build
