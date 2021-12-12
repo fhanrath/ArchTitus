@@ -147,3 +147,7 @@ timezone
 clear
 logo
 keymap
+
+# TODO:
+# laptop mode installing and enabling https://github.com/AdnanHodzic/auto-cpufreq
+# hardened mode installing the reqs for work
