@@ -41,6 +41,18 @@ export PATH=$PATH:~/.local/bin
 
 echo -ne "
 -------------------------------------------------------------------------
+                    Install Portmaster
+-------------------------------------------------------------------------
+"
+# Clone the repository
+git clone https://github.com/safing/portmaster-packaging
+
+# Enter the repo and build/install the package (it's under linux/)
+cd portmaster-packaging/linux
+makepkg -si
+
+echo -ne "
+-------------------------------------------------------------------------
                     SYSTEM READY FOR 3-post-setup.sh
 -------------------------------------------------------------------------
 "
