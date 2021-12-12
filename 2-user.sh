@@ -37,13 +37,7 @@ cd dotfiles
 ./link_dotfiles.sh
 cd ..
 
-echo -ne "press something to continue: "
-read testoien
-
 export PATH=$PATH:~/.local/bin
-
-echo -ne "press something to continue: "
-read testoien
 
 echo -ne "
 -------------------------------------------------------------------------

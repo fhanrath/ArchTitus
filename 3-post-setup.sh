@@ -25,14 +25,7 @@ if [[ "${FS}" == "luks" ]]; then
 sed -i "s%GRUB_CMDLINE_LINUX_DEFAULT=\"%GRUB_CMDLINE_LINUX_DEFAULT=\"cryptdevice=UUID=${encryped_partition_uuid}:ROOT root=/dev/mapper/ROOT %g" /etc/default/grub
 fi
 
-echo -ne "press something to continue: "
-read testoien
-
 grub-mkconfig -o /boot/grub/grub.cfg
-
-
-echo -ne "press something to continue: "
-read testoien
 
 
 echo -ne "
