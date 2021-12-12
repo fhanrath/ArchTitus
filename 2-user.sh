@@ -25,6 +25,12 @@ cd ~
 
 yay -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs.txt
 
+case $games in
+    y|Y|yes|Yes|YES)
+    yay -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs-gaming.txt;;
+    *) echo "not installing gaming packages";;
+esac
+
 touch "~/.cache/zshhistory"
 git clone "https://github.com/fhanrath/dotfiles"
 cd dotfiles
@@ -35,8 +41,6 @@ echo -ne "press something to continue: "
 read testoien
 
 export PATH=$PATH:~/.local/bin
-
-chsh -s /bin/zsh
 
 echo -ne "press something to continue: "
 read testoien

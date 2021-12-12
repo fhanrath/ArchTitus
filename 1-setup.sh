@@ -77,6 +77,17 @@ do
     echo "INSTALLING: ${line}"
    sudo pacman -S --noconfirm --needed ${line}
 done
+
+
+case $games in
+    y|Y|yes|Yes|YES)
+    cat /root/$SCRIPTHOME/pkg-files/pacman-pkgs-gaming.txt | while read line 
+    do
+    echo "INSTALLING: ${line}"
+    sudo pacman -S --noconfirm --needed ${line}
+    done;;
+    *) echo "not installing gaming packages";;
+esac
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Microcode

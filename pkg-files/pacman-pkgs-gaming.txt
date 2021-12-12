@@ -1,0 +1,7 @@
+wine
+wine-gecko
+wine-mono
+winetricks
+lutris
+gamemode
+steam

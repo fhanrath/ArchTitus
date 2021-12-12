@@ -131,6 +131,20 @@ echo -ne "Please enter your hostname: "
 read hostname
 echo "hostname=$hostname" >> setup.conf
 }
+games () {
+echo -ne "
+Do you want to play games? yes/no:
+"
+read games
+
+case $games in
+    y|Y|yes|Yes|YES)
+    echo "games=yes" >> setup.conf;;
+    n|N|no|NO|No)
+    echo "games=no" >> setup.conf;;
+    *) echo "Wrong option. Try again";drivessd;;
+esac
+}
 # More features in future
 # language (){}
 rm -rf setup.conf &>/dev/null
@@ -147,6 +161,7 @@ timezone
 clear
 logo
 keymap
+games
 
 # TODO:
 # laptop mode installing and enabling https://github.com/AdnanHodzic/auto-cpufreq

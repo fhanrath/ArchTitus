@@ -9,6 +9,3 @@ nordic-darker-standard-buttons-theme
 nordic-darker-theme
 oh-my-zsh-git
 nvm
-mangohud
-mangohud-common
-dxvk-bin

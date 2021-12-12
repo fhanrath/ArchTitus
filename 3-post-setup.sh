@@ -43,6 +43,12 @@ echo -ne "
 systemctl enable gdm.service
 echo -ne "
 -------------------------------------------------------------------------
+                    Changing Shell for User to zsh
+-------------------------------------------------------------------------
+"
+chsh -s /bin/zsh $username
+echo -ne "
+-------------------------------------------------------------------------
                     Enabling Essential Services
 -------------------------------------------------------------------------
 "
@@ -53,6 +59,12 @@ systemctl disable dhcpcd.service
 systemctl stop dhcpcd.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth
+echo -ne "
+-------------------------------------------------------------------------
+                    Harden System
+-------------------------------------------------------------------------
+"
+echo "PasswordAuthentication no" >> /etc/ssh/ssh_config
 echo -ne "
 -------------------------------------------------------------------------
                     Cleaning 
