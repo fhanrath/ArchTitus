@@ -54,6 +54,11 @@ systemctl enable NetworkManager.service
 systemctl enable bluetooth
 systemctl enable portmaster
 systemctl enable pipewire-pulse.service
+case $laptop in
+    y|Y|yes|Yes|YES)
+    systemctl enable --now auto-cpufreq.service;;
+    *) echo "not enabling laptop services";;
+esac
 echo -ne "
 -------------------------------------------------------------------------
                     Harden System

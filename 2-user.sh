@@ -31,6 +31,12 @@ case $games in
     *) echo "not installing gaming packages";;
 esac
 
+case $laptop in
+    y|Y|yes|Yes|YES)
+    yay -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs-laptop.txt;;
+    *) echo "not installing laptop packages";;
+esac
+
 touch "~/.cache/zshhistory"
 git clone "https://github.com/fhanrath/dotfiles"
 cd dotfiles

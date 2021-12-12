@@ -142,7 +142,21 @@ case $games in
     echo "games=yes" >> setup.conf;;
     n|N|no|NO|No)
     echo "games=no" >> setup.conf;;
-    *) echo "Wrong option. Try again";drivessd;;
+    *) echo "Wrong option. Try again";games;;
+esac
+}
+laptop () {
+echo -ne "
+Do you install on a laptop or otherwise mobile device? yes/no:
+"
+read laptop
+
+case $laptop in
+    y|Y|yes|Yes|YES)
+    echo "laptop=yes" >> setup.conf;;
+    n|N|no|NO|No)
+    echo "laptop=no" >> setup.conf;;
+    *) echo "Wrong option. Try again";laptop;;
 esac
 }
 # More features in future
@@ -162,7 +176,4 @@ clear
 logo
 keymap
 games
-
-# TODO:
-# laptop mode installing and enabling https://github.com/AdnanHodzic/auto-cpufreq
-# hardened mode installing the reqs for work
+laptop
