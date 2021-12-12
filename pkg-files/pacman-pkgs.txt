@@ -103,6 +103,7 @@ starship
 otf-ipafont
 wqy-microhei
 filezilla
+keepassxc
 gnome
 gnome-shell-extensions
 gnome-tweaks
