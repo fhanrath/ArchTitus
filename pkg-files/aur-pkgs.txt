@@ -10,3 +10,5 @@ nordic-darker-theme
 oh-my-zsh-git
 nvm
 xcursor-breeze
+gnome-shell-extension-appindicator-git
+gnome-shell-extension-tiling-assistant
