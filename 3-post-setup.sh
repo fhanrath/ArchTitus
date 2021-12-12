@@ -53,6 +53,7 @@ systemctl stop dhcpcd.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth
 systemctl enable portmaster
+systemctl enable pipewire-pulse.service
 echo -ne "
 -------------------------------------------------------------------------
                     Harden System

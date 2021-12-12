@@ -49,7 +49,7 @@ git clone https://github.com/safing/portmaster-packaging
 
 # Enter the repo and build/install the package (it's under linux/)
 cd portmaster-packaging/linux
-makepkg -si
+makepkg -si --noconfirm
 
 echo -ne "
 -------------------------------------------------------------------------
