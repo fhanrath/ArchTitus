@@ -9,3 +9,4 @@ nordic-darker-standard-buttons-theme
 nordic-darker-theme
 oh-my-zsh-git
 nvm
+xcursor-breeze

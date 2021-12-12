@@ -40,7 +40,7 @@ esac
 touch "~/.cache/zshhistory"
 git clone "https://github.com/fhanrath/dotfiles"
 cd dotfiles
-./link_dotfiles.sh
+./copy_dotfiles.sh
 cd ..
 
 export PATH=$PATH:~/.local/bin
