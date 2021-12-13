@@ -104,6 +104,8 @@ otf-ipafont
 wqy-microhei
 filezilla
 keepassxc
+syncthing
+obs-studio
 gnome
 gnome-shell-extensions
 gnome-tweaks
