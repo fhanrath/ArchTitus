@@ -107,3 +107,4 @@ keepassxc
 gnome
 gnome-shell-extensions
 gnome-tweaks
+qt5-wayland
