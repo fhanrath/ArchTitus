@@ -106,6 +106,14 @@ filezilla
 keepassxc
 syncthing
 obs-studio
+git-delta
+exa
+bat
+zoxide
+ripgrep
+fd
+bottom
+tealdeer
 gnome
 gnome-shell-extensions
 gnome-tweaks
