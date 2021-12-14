@@ -184,6 +184,7 @@ echo -ne "
                     DISABLED
 -------------------------------------------------------------------------
 "
+TODO: ask if swap is wanted and how big
 #TOTALMEM=$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*')
 #if [[  $TOTALMEM -lt 24000000 ]]; then
     #Put swap into the actual system, not into RAM disk, otherwise there is no point in it, it'll cache RAM into RAM. So, /mnt/ everything.
