@@ -141,6 +141,27 @@ if ! grep -qs '/mnt' /proc/mounts; then
     echo "Rebooting in 1 Second ..." && sleep 1
     reboot now
 fi
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Checking for low memory systems <24G
+                    DISABLED
+-------------------------------------------------------------------------
+"
+if [[  $swapmb -gt 0 ]]; then
+    # Put swapfile into separate subvolume or else you wouldn't be able to make snapshots of root
+    btrfs subvolume create /mnt/swap
+    truncate -s 0 /mnt/swap/swapfile
+    chattr +C /mnt/swap/swapfile #apply NOCOW, btrfs needs that.
+    btrfs property set /mnt/swap/swapfile compression none
+    dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=$swapmb status=progress
+    chmod 600 /mnt/swap/swapfile #set permissions.
+    chown root /mnt/swap/swapfile
+    mkswap /mnt/swap/swapfile
+    swapon /mnt/swap/swapfile
+    echo "vm.swappiness=10" >> /mnt/etc/sysctl.conf # Lower swappiness
+fi
+
 echo -ne "
 -------------------------------------------------------------------------
                     Arch Install on Main Drive
@@ -159,26 +180,6 @@ echo -ne "
 if [[ ! -d "/sys/firmware/efi" ]]; then
     grub-install --boot-directory=/mnt/boot ${DISK}
 fi
-echo -ne "
--------------------------------------------------------------------------
-                    Checking for low memory systems <24G
-                    DISABLED
--------------------------------------------------------------------------
-"
-TODO: ask if swap is wanted and how big
-#TOTALMEM=$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*')
-#if [[  $TOTALMEM -lt 24000000 ]]; then
-    #Put swap into the actual system, not into RAM disk, otherwise there is no point in it, it'll cache RAM into RAM. So, /mnt/ everything.
-#    mkdir /mnt/opt/swap #make a dir that we can apply NOCOW to to make it btrfs-friendly.
-#    chattr +C /mnt/opt/swap #apply NOCOW, btrfs needs that.
-#    dd if=/dev/zero of=/mnt/opt/swap/swapfile bs=1M count=16384 status=progress
-#    chmod 600 /mnt/opt/swap/swapfile #set permissions.
-#    chown root /mnt/opt/swap/swapfile
-#    mkswap /mnt/opt/swap/swapfile
-#    swapon /mnt/opt/swap/swapfile
-#    #The line below is written to /mnt/ but doesn't contain /mnt/, since it's just / for the sysytem itself.
-#    echo "/opt/swap/swapfile	none	swap	sw	0	0" >> /mnt/etc/fstab #Add swap to fstab, so it KEEPS working after installation.
-#fi
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 1-setup.sh

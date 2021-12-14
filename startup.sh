@@ -159,6 +159,21 @@ case $laptop in
     *) echo "Wrong option. Try again";laptop;;
 esac
 }
+swapfile () {
+echo -ne "
+How big should your swap file be? (in GB, 0 = no swap)
+"
+read swapgb
+
+if [[ $swapgb ]] && [ $swapgb -eq $swapgb 2>/dev/null ] && [ $swapgb -ge 0 ]
+then
+    swapmb=$(($swapgb*1024))
+    echo $swapmb >> setup.conf
+else
+    echo "Not a positive integer. Try again"
+    swapfile
+fi
+}
 # More features in future
 # language (){}
 rm -rf setup.conf &>/dev/null
@@ -177,3 +192,4 @@ logo
 keymap
 games
 laptop
+swapfile
