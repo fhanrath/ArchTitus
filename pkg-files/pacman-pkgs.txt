@@ -105,6 +105,7 @@ wqy-microhei
 filezilla
 keepassxc
 syncthing
+yt-dlp
 obs-studio
 git-delta
 exa

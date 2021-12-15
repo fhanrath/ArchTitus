@@ -54,6 +54,7 @@ systemctl enable NetworkManager.service
 systemctl enable bluetooth
 systemctl enable portmaster
 systemctl enable pipewire-pulse.service
+systemctl enable syncthing@$username.service
 case $laptop in
     y|Y|yes|Yes|YES)
     systemctl enable --now auto-cpufreq.service;;
@@ -64,7 +65,7 @@ echo -ne "
                     Harden System
 -------------------------------------------------------------------------
 "
-echo "PasswordAuthentication no" >> /etc/ssh/ssh_config
+echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 echo -ne "
 -------------------------------------------------------------------------
                     Cleaning 
