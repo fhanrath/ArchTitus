@@ -53,8 +53,9 @@ systemctl stop dhcpcd.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth
 systemctl enable portmaster
-systemctl enable pipewire-pulse.service
 systemctl enable syncthing@$username.service
+su $username -c "systemctl enable pipewire-pulse --user"
+su $username -c "systemctl enable pipewire_sink --user"
 case $laptop in
     y|Y|yes|Yes|YES)
     systemctl enable --now auto-cpufreq.service;;
