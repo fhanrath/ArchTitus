@@ -8,6 +8,8 @@ xorg-xinit
 alacritty
 pipewire
 pipewire-alsa
+xdg-desktop-portal
+xdg-desktop-portal-gtk
 libpipewire02
 gst-plugin-pipewire
 pipewire-media-session
@@ -118,4 +120,5 @@ tealdeer
 gnome
 gnome-shell-extensions
 gnome-tweaks
+xdg-desktop-portal-gnome
 qt5-wayland

@@ -54,6 +54,7 @@ systemctl enable NetworkManager.service
 systemctl enable bluetooth
 systemctl enable portmaster
 systemctl enable syncthing@$username.service
+su $username -c "systemctl enable pipewire --user"
 su $username -c "systemctl enable pipewire-pulse --user"
 su $username -c "systemctl enable pipewire_sink --user"
 case $laptop in
@@ -61,6 +62,12 @@ case $laptop in
     systemctl enable --now auto-cpufreq.service;;
     *) echo "not enabling laptop services";;
 esac
+echo -ne "
+-------------------------------------------------------------------------
+                    Configure pipewire
+-------------------------------------------------------------------------
+"
+/home/$username/$SCRIPTHOME/pipewire/create_config.sh
 echo -ne "
 -------------------------------------------------------------------------
                     Harden System
