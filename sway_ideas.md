@@ -3,6 +3,8 @@
 https://github.com/swaywm/sway/wiki/i3-Migration-Guide
 https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway#log-in-managers
 https://www.fosskers.ca/en/blog/wayland
+https://shibumi.dev/posts/wayland-in-2021/
+https://arewewaylandyet.com/
 
 TODOs:
 https://wiki.archlinux.org/title/GNOME/Keyring#Using_the_keyring_outside_GNOME
@@ -23,6 +25,7 @@ https://github.com/ftphikari/wlogoutbar
 [nwggrid](https://github.com/nwg-piotr/nwg-launchers)
 [wlaunchpad](https://github.com/ftphikari/wlaunchpad)
 [sirula](https://github.com/DorianRudolph/sirula) for text based
+[onagre](https://github.com/oknozor/onagre)
 
 ## bar 
 
@@ -38,6 +41,12 @@ https://github.com/nwg-piotr/gopsuinfo
 [wdisplays](https://github.com/artizirk/wdisplays)
 
 https://aur.archlinux.org/packages/wdisplays/
+
+## Audio
+
+[pamixer](https://github.com/cdemoulins/pamixer)
+pavucontrol?
+[easyeffects](https://github.com/wwmm/easyeffects)
 
 ## Wallpaper
 
