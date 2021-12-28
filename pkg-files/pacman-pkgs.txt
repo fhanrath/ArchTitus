@@ -1,10 +1,10 @@
 mesa
-xorg
-xorg-server
-xorg-apps
-xorg-drivers
-xorg-xkill
-xorg-xinit
+wayland
+wayland-protocols
+glfw-wayland
+xorg-xwayland
+xorg-xlsclients # to list all apps running on xwayland ($ xlsclients)
+egl-wayland
 alacritty
 pipewire
 pipewire-alsa
@@ -17,6 +17,7 @@ pipewire-pulse
 pipewire-v4l2
 wireplumber
 helvum
+mpv
 autoconf
 automake
 base
@@ -31,7 +32,6 @@ cmatrix
 cups
 thunar
 efibootmgr
-egl-wayland
 exfat-utils
 extra-cmake-modules
 filelight
@@ -117,8 +117,5 @@ ripgrep
 fd
 bottom
 tealdeer
-gnome
-gnome-shell-extensions
-gnome-tweaks
-xdg-desktop-portal-gnome
 qt5-wayland
+qt6-wayland
