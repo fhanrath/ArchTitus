@@ -98,6 +98,7 @@ zsh-autosuggestions
 rustup
 neovim
 nano
+firejail
 firefox-developer-edition
 psensor
 lm_sensors
