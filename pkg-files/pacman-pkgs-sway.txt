@@ -2,3 +2,6 @@ sway
 xdg-desktop-portal-wlr
 wl-clipboard-rs
 waybar
+wdisplays
+pamixer
+pavucontrol
