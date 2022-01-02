@@ -14,3 +14,4 @@ syncthingtray-lite
 gnome-shell-extension-appindicator-git
 gnome-shell-extension-tiling-assistant
 spotify-tui
+ttf-material-design-icons
