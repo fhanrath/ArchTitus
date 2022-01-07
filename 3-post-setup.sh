@@ -25,14 +25,26 @@ if [[ "${FS}" == "luks" ]]; then
 sed -i "s%GRUB_CMDLINE_LINUX_DEFAULT=\"%GRUB_CMDLINE_LINUX_DEFAULT=\"cryptdevice=UUID=${encryped_partition_uuid}:ROOT root=/dev/mapper/ROOT %g" /etc/default/grub
 fi
 
-echo -e "Installing CyberRe Grub theme..."
+echo -e "Pulling Xenlism-Arch Grub theme..."
+THEME_SUBDIR="xenlism-grub-arch-4k/Xenlism-Arch/"
+LOCAL_THEME_DIR="theme/${THEME_SUBDIR}"
 THEME_DIR="/boot/grub/themes"
-THEME_NAME=CyberRe
+THEME_NAME=Xenlism-Arch
+THEME_REPO="git@github.com:fhanrath/Grub-themes.git"
+cd /root/$SCRIPTHOME
+mkdir theme
+cd theme
+git init
+git config core.sparseCheckout true
+echo $THEME_SUBDIR >> .git/info/sparse-checkout
+git remote add -f origin $THEME_REPO
+git pull origin main
+cd ..
+echo -e "Installing ${THEME_NAME} Grub theme..."
 echo -e "Creating the theme directory..."
 mkdir -p "${THEME_DIR}/${THEME_NAME}"
 echo -e "Copying the theme..."
-cd ${HOME}/$SCRIPTHOME
-cp -a ${THEME_NAME}/* ${THEME_DIR}/${THEME_NAME}
+cp -a ${LOCAL_THEME_DIR}/* ${THEME_DIR}/${THEME_NAME}
 echo -e "Backing up Grub config..."
 cp -an /etc/default/grub /etc/default/grub.bak
 echo -e "Setting the theme as the default..."
