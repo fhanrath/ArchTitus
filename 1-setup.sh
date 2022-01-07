@@ -9,7 +9,7 @@ echo -ne "
   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
 -------------------------------------------------------------------------
                     Automated Arch Linux Installer
-                        SCRIPTHOME: $SCRIPTHOME
+                        Scripthome: ${SCRIPTHOME}
 -------------------------------------------------------------------------
 "
 source /root/$SCRIPTHOME/setup.conf
@@ -45,28 +45,29 @@ fi
 echo -ne "
 -------------------------------------------------------------------------
                     Setup Language to US and set locale
-                         new timezone: ${timezone}
-                           new keymap: ${keymap}
+                         new timezone: ${TIMEZONE}
+                           new keymap: ${KEYMAP}
 -------------------------------------------------------------------------
 "
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
-timedatectl --no-ask-password set-timezone ${timezone}
+timedatectl --no-ask-password set-timezone ${TIMEZONE}
 timedatectl --no-ask-password set-ntp 1
 localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_TIME="en_US.UTF-8"
 
 # Set keymaps
-localectl --no-ask-password set-keymap ${keymap}
+localectl --no-ask-password set-keymap ${KEYMAP}
 
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 #Add parallel downloading
-sed -i 's/^#Para/Para/' /etc/pacman.conf
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
+
 echo -ne "
 -------------------------------------------------------------------------
                     Installing Base System  
@@ -128,13 +129,14 @@ echo -ne "
 "
 if [ $(whoami) = "root"  ]; then
     groupadd libvirt
-    useradd -m -G wheel,libvirt,uucp -s /bin/bash $username 
-# use chpasswd to enter $username:$password
-    echo "$username:$password" | chpasswd
-	cp -R /root/$SCRIPTHOME /home/$username/
-    chown -R $username: /home/$username/$SCRIPTHOME
-# enter $hostname to /etc/hostname
-	echo $hostname > /etc/hostname
+    useradd -m -G wheel,libvirt,uucp -s /bin/bash $USERNAME 
+
+# use chpasswd to enter $USERNAME:$PASSWORD
+    echo "$USERNAME:$PASSWORD" | chpasswd
+	cp -R /root/$SCRIPTHOME /home/$USERNAME/
+    chown -R $USERNAME: /home/$USERNAME/$SCRIPTHOME
+# enter $nameofmachine to /etc/hostname
+	echo $nameofmachine > /etc/hostname
 else
 	echo "You are already a user proceed with aur installs"
 fi

@@ -28,7 +28,7 @@ iso=$(curl -4 ifconfig.co/country-iso)
 timedatectl set-ntp true
 pacman -S --noconfirm pacman-contrib terminus-font
 setfont ter-v22b
-sed -i 's/^#Para/Para/' /etc/pacman.conf
+sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 pacman -S --noconfirm reflector rsync grub
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 echo -ne "
@@ -83,6 +83,7 @@ mountallsubvol () {
     mount -o ${mountoptions},subvol=@.snapshots /dev/mapper/ROOT /mnt/.snapshots
     mount -o ${mountoptions},subvol=@var /dev/mapper/ROOT /mnt/var
 }
+
 if [[ "${DISK}" =~ "nvme" ]]; then
     partition2=${DISK}p2
     partition3=${DISK}p3
@@ -148,7 +149,7 @@ echo -ne "
                     DISABLED
 -------------------------------------------------------------------------
 "
-if [[  $swapmb -gt 0 ]]; then
+if [[ $swapmb -gt 0 ]]; then
     # Put swapfile into separate subvolume or else you wouldn't be able to make snapshots of root
     btrfs subvolume create /mnt/swap
     truncate -s 0 /mnt/swap/swapfile
