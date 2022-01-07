@@ -113,14 +113,14 @@ echo -ne "
 # Graphics Drivers find and install
 gpu_type=$(lspci)
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
-    pacman -S nvidia --noconfirm --needed
+    pacman -S nvidia nvidia-utils --noconfirm --needed
 	nvidia-xconfig
 elif grep -E "Radeon" <<< ${gpu_type}; then
-    pacman -S mesa lib32-mesa xf86-video-amdgpu amdvlk lib32-amdvlk --noconfirm --needed
+    pacman -S mesa lib32-mesa xf86-video-amdgpu amdvlk lib32-amdvlk radeontop --noconfirm --needed
 elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
-    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa --needed --noconfirm
+    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa intel-gpu-tools --needed --noconfirm
 elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
-    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa --needed --noconfirm
+    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa intel-gpu-tools --needed --noconfirm
 fi
 echo -ne "
 -------------------------------------------------------------------------

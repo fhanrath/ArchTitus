@@ -61,6 +61,7 @@ linux-headers
 lsof
 make
 networkmanager
+network-manager-applet
 ntfs-3g
 ntp
 okular
