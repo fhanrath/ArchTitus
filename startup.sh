@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
-# This script will ask users about their prefrences like disk, file system,
+# This script will ask users about their prefrences 
+# like disk, file system, timezone, keyboard layout,
+# user name, password, etc.
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+# set up a config file
+CONFIG_FILE=$SCRIPT_DIR/setup.conf
+if [ ! -f $CONFIG_FILE ]; then # check if file exists
+    touch -f $CONFIG_FILE # create file if not exists
+fi
+
+# set options in setup.conf
+set_option() {
+    if grep -Eq "^${1}.*" $CONFIG_FILE; then # check if option exists
+        sed -i -e "/^${1}.*/d" $CONFIG_FILE # delete option if exists
+    fi
+    echo "${1}=${2}" >>$CONFIG_FILE # add option
+}
 logo () {
 # This will be shown on every set as user is progressing
 echo -ne "
@@ -27,13 +44,13 @@ echo -ne "
 "
 read FS
 case $FS in
-1) echo "FS=btrfs" >> setup.conf;;
-2) echo "FS=ext4" >> setup.conf;;
+1) set_option FS btrfs;;
+2) set_option FS ext4;;
 3) 
 echo -ne "Please enter your luks password: "
-read luks_password
-echo "luks_password=$luks_password" >> setup.conf
-echo "FS=luks" >> setup.conf;;
+read -s luks_password # read password without echo
+set_option luks_password $luks_password
+set_option FS luks;;
 0) exit ;;
 *) echo "Wrong option please select again"; filesystem;;
 esac
@@ -41,16 +58,16 @@ esac
 timezone () {
 # Added this from arch wiki https://wiki.archlinux.org/title/System_time
 time_zone="$(curl --fail https://ipapi.co/timezone)"
-echo -ne "System detected your timezone to be '$time_zone'"
+echo -ne "System detected your timezone to be '$time_zone' \n"
 echo -ne "Is this correct? yes/no:" 
 read answer
 case $answer in
     y|Y|yes|Yes|YES)
-    echo "timezone=$time_zone" >> setup.conf;;
+    set_option TIMEZONE $time_zone;;
     n|N|no|NO|No)
     echo "Please enter your desired timezone e.g. Europe/London :" 
     read new_timezone
-    echo "timezone=$new_timezone" >> setup.conf;;
+    set_option TIMEZONE $new_timezone;;
     *) echo "Wrong option. Try again";timezone;;
 esac
 }
@@ -88,8 +105,9 @@ Please select key board layout from this list
 
 "
 read -p "Your key boards layout:" keymap
-echo "keymap=$keymap" >> setup.conf
+set_option KEYMAP $keymap
 }
+
 drivessd () {
 echo -ne "
 Is this an ssd? yes/no:
@@ -98,14 +116,17 @@ read ssd_drive
 
 case $ssd_drive in
     y|Y|yes|Yes|YES)
-    echo "mountoptions=noatime,compress=zstd,ssd,commit=120" >> setup.conf;;
+    set_option mountoptions noatime,compress=zstd,ssd,commit=120
     n|N|no|NO|No)
-    echo "mountoptions=noatime,compress=zstd,commit=120" >> setup.conf;;
+    set_option mountoptions noatime,compress=zstd,commit=120
     *) echo "Wrong option. Try again";drivessd;;
 esac
 }
+
+# selection for disk type
 diskpart () {
-lsblk
+# show disks present on system
+lsblk -n --output TYPE,KNAME | awk '$1=="disk"{print NR,"/dev/"$2}' # show disks with /dev/ prefix
 echo -ne "
 ------------------------------------------------------------------------
     THIS WILL FORMAT AND DELETE ALL DATA ON THE DISK             
@@ -113,23 +134,21 @@ echo -ne "
     after formating your disk there is no way to get data back      
 ------------------------------------------------------------------------
 
-Please enter disk to work on: (example /dev/sda):
+Please enter full path to disk: (example /dev/sda):
 "
 read option
-echo "DISK=$option" >> setup.conf
 
 drivessd
+set_option DISK $option
 }
 userinfo () {
-echo -ne "Please enter username: "
-read username
-echo "username=$username" >> setup.conf
-echo -ne "Please enter your password: "
-read password
-echo "password=$password" >> setup.conf
-echo -ne "Please enter your hostname: "
-read hostname
-echo "hostname=$hostname" >> setup.conf
+read -p "Please enter your username: " username
+set_option USERNAME ${username,,} # convert to lower case as in issue #109 
+echo -ne "Please enter your password: \n"
+read -s password # read password without echo
+set_option PASSWORD $password
+read -rep "Please enter your hostname: " nameofmachine
+set_option nameofmachine $nameofmachine
 }
 games () {
 echo -ne "
@@ -153,9 +172,9 @@ read laptop
 
 case $laptop in
     y|Y|yes|Yes|YES)
-    echo "laptop=yes" >> setup.conf;;
+    set_option laptop yes
     n|N|no|NO|No)
-    echo "laptop=no" >> setup.conf;;
+    set_option laptop no
     *) echo "Wrong option. Try again";laptop;;
 esac
 }
@@ -168,7 +187,7 @@ read swapgb
 if [[ $swapgb ]] && [ $swapgb -eq $swapgb 2>/dev/null ] && [ $swapgb -ge 0 ]
 then
     swapmb=$(($swapgb*1024))
-    echo $swapmb >> setup.conf
+    set_option swapmb $swapmb
 else
     echo "Not a positive integer. Try again"
     swapfile
@@ -176,7 +195,10 @@ fi
 }
 # More features in future
 # language (){}
-rm -rf setup.conf &>/dev/null
+
+# Starting functions
+clear
+logo
 userinfo
 clear
 logo

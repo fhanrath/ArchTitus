@@ -25,7 +25,22 @@ if [[ "${FS}" == "luks" ]]; then
 sed -i "s%GRUB_CMDLINE_LINUX_DEFAULT=\"%GRUB_CMDLINE_LINUX_DEFAULT=\"cryptdevice=UUID=${encryped_partition_uuid}:ROOT root=/dev/mapper/ROOT %g" /etc/default/grub
 fi
 
+echo -e "Installing CyberRe Grub theme..."
+THEME_DIR="/boot/grub/themes"
+THEME_NAME=CyberRe
+echo -e "Creating the theme directory..."
+mkdir -p "${THEME_DIR}/${THEME_NAME}"
+echo -e "Copying the theme..."
+cd ${HOME}/$SCRIPTHOME
+cp -a ${THEME_NAME}/* ${THEME_DIR}/${THEME_NAME}
+echo -e "Backing up Grub config..."
+cp -an /etc/default/grub /etc/default/grub.bak
+echo -e "Setting the theme as the default..."
+grep "GRUB_THEME=" /etc/default/grub 2>&1 >/dev/null && sed -i '/GRUB_THEME=/d' /etc/default/grub
+echo "GRUB_THEME=\"${THEME_DIR}/${THEME_NAME}/theme.txt\"" >> /etc/default/grub
+echo -e "Updating grub..."
 grub-mkconfig -o /boot/grub/grub.cfg
+echo -e "All set!"
 
 
 echo -ne "
@@ -39,7 +54,7 @@ echo -ne "
                     Changing Shell for User to zsh
 -------------------------------------------------------------------------
 "
-chsh -s /bin/zsh $username
+chsh -s /bin/zsh $USERNAME
 echo -ne "
 -------------------------------------------------------------------------
                     Enabling Essential Services
@@ -53,10 +68,10 @@ systemctl stop dhcpcd.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth
 systemctl enable portmaster
-systemctl enable syncthing@$username.service
-su $username -c "systemctl enable pipewire --user"
-su $username -c "systemctl enable pipewire-pulse --user"
-su $username -c "systemctl enable pipewire_sink --user"
+systemctl enable syncthing@$USERNAME.service
+su $USERNAME -c "systemctl enable pipewire --user"
+su $USERNAME -c "systemctl enable pipewire-pulse --user"
+su $USERNAME -c "systemctl enable pipewire_sink --user"
 case $laptop in
     y|Y|yes|Yes|YES)
     systemctl enable --now auto-cpufreq.service;;
@@ -67,7 +82,7 @@ echo -ne "
                     Configure pipewire
 -------------------------------------------------------------------------
 "
-/home/$username/$SCRIPTHOME/pipewire/create_config.sh
+/home/$USERNAME/$SCRIPTHOME/pipewire/create_config.sh
 echo -ne "
 -------------------------------------------------------------------------
                     Harden System
@@ -85,7 +100,7 @@ sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /et
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 rm -r /root/$SCRIPTHOME
-rm -r /home/$username/$SCRIPTHOME
+rm -r /home/$USERNAME/$SCRIPTHOME
 
 # Replace in the same state
 cd $pwd
