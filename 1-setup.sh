@@ -128,7 +128,7 @@ echo -ne "
 "
 if [ $(whoami) = "root"  ]; then
     groupadd libvirt
-    useradd -m -G wheel,libvirt -s /bin/bash $username 
+    useradd -m -G wheel,libvirt,uucp -s /bin/bash $username 
 # use chpasswd to enter $username:$password
     echo "$username:$password" | chpasswd
 	cp -R /root/$SCRIPTHOME /home/$username/
