@@ -62,6 +62,7 @@ lsof
 make
 networkmanager
 network-manager-applet
+networkmanager-openvpn
 ntfs-3g
 ntp
 okular
