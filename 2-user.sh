@@ -30,6 +30,10 @@ cd ~/build/paru
 rustup toolchain install stable
 makepkg -si --noconfirm
 cd ~/build
+git clone git@github.com:fhanrath/sway-save-outputs.git
+cd ~/build/sway-save-outputs
+./install.sh
+cd ~/build
 
 echo -ne "
 -------------------------------------------------------------------------
