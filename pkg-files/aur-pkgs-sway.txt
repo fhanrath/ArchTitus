@@ -1,1 +1,2 @@
 wl-clipboard-rs
+autotiling-rs-git
