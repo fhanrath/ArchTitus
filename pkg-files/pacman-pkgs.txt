@@ -65,6 +65,7 @@ network-manager-applet
 networkmanager-openvpn
 ntfs-3g
 ntp
+nomacs
 okular
 openbsd-netcat
 openssh
