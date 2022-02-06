@@ -66,6 +66,7 @@ networkmanager-openvpn
 ntfs-3g
 ntp
 nomacs
+btop
 okular
 openbsd-netcat
 openssh
