@@ -1,2 +1,3 @@
 wl-clipboard-rs
 autotiling-rs-git
+rofi-lbonn-wayland
