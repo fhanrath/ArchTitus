@@ -125,3 +125,4 @@ gnome-shell-extensions
 gnome-tweaks
 xdg-desktop-portal-gnome
 qt5-wayland
+ungoogled-chromium
