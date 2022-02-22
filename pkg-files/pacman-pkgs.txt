@@ -30,7 +30,6 @@ btrfs-progs
 celluloid
 cmatrix
 cups
-thunar
 efibootmgr
 exfat-utils
 extra-cmake-modules

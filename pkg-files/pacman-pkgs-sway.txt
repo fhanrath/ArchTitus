@@ -8,3 +8,4 @@ pavucontrol
 grim
 wf-recorder
 slurp
+ranger
