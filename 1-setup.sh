@@ -66,6 +66,14 @@ sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
+#  Install oben build system for ungoogled chromium
+curl -s 'https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/x86_64/home_ungoogled_chromium_Arch.key' | pacman-key -a -
+echo '
+[home_ungoogled_chromium_Arch]
+SigLevel = Required TrustAll
+Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' | tee --append /etc/pacman.conf
+
 pacman -Sy --noconfirm
 
 echo -ne "
