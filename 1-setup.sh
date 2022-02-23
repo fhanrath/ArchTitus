@@ -87,6 +87,20 @@ do
    sudo pacman -S --noconfirm --needed ${line}
 done
 
+case $sway in
+    y|Y|yes|Yes|YES)
+    cat /root/$SCRIPTHOME/pkg-files/pacman-pkgs-sway.txt | while read line 
+    do
+    echo "INSTALLING: ${line}"
+    sudo pacman -S --noconfirm --needed ${line}
+    done;;
+    *)
+    cat /root/$SCRIPTHOME/pkg-files/pacman-pkgs-gnome.txt | while read line 
+    do
+    echo "INSTALLING: ${line}"
+    sudo pacman -S --noconfirm --needed ${line}
+    done;;
+esac
 
 case $games in
     y|Y|yes|Yes|YES)

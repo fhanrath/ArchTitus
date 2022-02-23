@@ -57,6 +57,13 @@ echo -ne "
 
 paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs.txt
 
+case $sway in
+    y|Y|yes|Yes|YES)
+    paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs-sway.txt;;
+    done;;
+    *);;
+esac
+
 case $games in
     y|Y|yes|Yes|YES)
     paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs-gaming.txt;;

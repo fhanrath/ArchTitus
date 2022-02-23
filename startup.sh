@@ -193,6 +193,20 @@ else
     swapfile
 fi
 }
+sway () {
+echo -ne "
+Do you want to install sway? (gnome will be installed otherwise) yes/no:
+"
+read sway
+
+case $sway in
+    y|Y|yes|Yes|YES)
+    set_option sway yes
+    n|N|no|NO|No)
+    set_option sway no
+    *) echo "Wrong option. Try again";sway;;
+esac
+}
 # More features in future
 # language (){}
 
@@ -212,6 +226,7 @@ timezone
 clear
 logo
 keymap
+sway
 games
 laptop
 swapfile
