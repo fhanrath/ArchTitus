@@ -41,6 +41,7 @@ fuseiso
 gcc
 gimp
 inkscape
+krita
 git
 gptfdisk
 grub
@@ -50,7 +51,6 @@ gst-plugins-good
 gst-plugins-ugly
 gwenview
 neofetch
-htop
 iptables-nft
 libdvdcss
 libtool
@@ -83,7 +83,6 @@ python-pip
 qemu
 rsync
 snapper
-flameshot
 sudo
 swtpm
 traceroute

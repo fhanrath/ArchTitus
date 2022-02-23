@@ -1,0 +1,2 @@
+gnome-shell-extension-appindicator-git
+gnome-shell-extension-tiling-assistant

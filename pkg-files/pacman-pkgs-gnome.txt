@@ -2,3 +2,4 @@ gnome
 gnome-shell-extensions
 gnome-tweaks
 xdg-desktop-portal-gnome
+flameshot

@@ -1,6 +1,5 @@
 vscodium-bin
 librewolf-bin
-brave-bin
 autojump
 otf-nerd-fonts-fira-code
 snapper-gui-git
@@ -10,8 +9,5 @@ nordic-darker-theme
 oh-my-zsh-git
 nvm
 xcursor-breeze
-syncthingtray-lite
-gnome-shell-extension-appindicator-git
-gnome-shell-extension-tiling-assistant
 spotify-tui
 ttf-material-design-icons

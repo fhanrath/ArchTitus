@@ -60,8 +60,8 @@ paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs.txt
 case $sway in
     y|Y|yes|Yes|YES)
     paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs-sway.txt;;
-    done;;
-    *);;
+    *)
+    paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs-gnome.txt;;
 esac
 
 case $games in
