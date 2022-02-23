@@ -170,6 +170,38 @@ if [[ ${FS} == "luks" ]]; then
 # making mkinitcpio with linux kernel
     mkinitcpio -p linux
 fi
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Manual Installs
+-------------------------------------------------------------------------
+"
+mkdir ~/build
+cd ~/build
+git clone "https://aur.archlinux.org/paru.git"
+cd ~/build/paru
+rustup toolchain install stable
+makepkg -si --noconfirm
+cd ~/build
+git clone https://github.com/fhanrath/sway-save-outputs
+cd ~/build/sway-save-outputs
+./install.sh
+cd ~/build
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Install Portmaster
+-------------------------------------------------------------------------
+"
+# Clone the repository
+git clone https://github.com/safing/portmaster-packaging
+
+# Enter the repo and build/install the package (it's under linux/)
+cd portmaster-packaging/linux
+makepkg -si --noconfirm
+
+cd ~
+
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 2-user.sh

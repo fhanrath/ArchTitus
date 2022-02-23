@@ -17,38 +17,6 @@ Installing AUR Softwares
 # You can solve users running this script as root with this and then doing the same for the next for statement. However I will leave this up to you.
 source ~/$SCRIPTHOME/setup.conf
 
-
-echo -ne "
--------------------------------------------------------------------------
-                    Manual Installs
--------------------------------------------------------------------------
-"
-mkdir ~/build
-cd ~/build
-git clone "https://aur.archlinux.org/paru.git"
-cd ~/build/paru
-rustup toolchain install stable
-makepkg -si --noconfirm
-cd ~/build
-git clone git@github.com:fhanrath/sway-save-outputs.git
-cd ~/build/sway-save-outputs
-./install.sh
-cd ~/build
-
-echo -ne "
--------------------------------------------------------------------------
-                    Install Portmaster
--------------------------------------------------------------------------
-"
-# Clone the repository
-git clone https://github.com/safing/portmaster-packaging
-
-# Enter the repo and build/install the package (it's under linux/)
-cd portmaster-packaging/linux
-makepkg -si --noconfirm
-
-cd ~
-
 echo -ne "
 -------------------------------------------------------------------------
                     Install AUR Packages
