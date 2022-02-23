@@ -19,11 +19,56 @@ source ~/$SCRIPTHOME/setup.conf
 
 echo -ne "
 -------------------------------------------------------------------------
+                    Manual Installs
+-------------------------------------------------------------------------
+"
+mkdir ~/build
+cd ~/build
+git clone "https://aur.archlinux.org/paru.git"
+cd ~/build/paru
+rustup toolchain install stable
+makepkg -si --noconfirm
+
+echo "test paru install"
+read paruinst
+
+cd ~/build
+git clone https://github.com/fhanrath/sway-save-outputs
+cd ~/build/sway-save-outputs
+./install.sh
+cd ~/build
+
+echo "sway-save-outputs install"
+read paruinst
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Install Portmaster
+-------------------------------------------------------------------------
+"
+# Clone the repository
+git clone https://github.com/safing/portmaster-packaging
+
+# Enter the repo and build/install the package (it's under linux/)
+cd portmaster-packaging/linux
+makepkg -si --noconfirm
+
+echo "portmaster install"
+read portinst
+
+cd ~
+
+
+echo -ne "
+-------------------------------------------------------------------------
                     Install AUR Packages
 -------------------------------------------------------------------------
 "
 
 paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs.txt
+
+echo "aur install"
+read aurinst
 
 case $sway in
     y|Y|yes|Yes|YES)
