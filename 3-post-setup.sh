@@ -60,7 +60,13 @@ echo -ne "
                     Enabling Login Display Manager
 -------------------------------------------------------------------------
 "
-systemctl enable gdm.service
+case $sway in
+    y|Y|yes|Yes|YES)
+    ;;
+    *)
+    systemctl enable gdm.service;;
+esac
+
 echo -ne "
 -------------------------------------------------------------------------
                     Changing Shell for User to zsh
