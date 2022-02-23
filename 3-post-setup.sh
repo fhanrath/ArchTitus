@@ -30,7 +30,7 @@ THEME_SUBDIR="xenlism-grub-arch-4k/Xenlism-Arch/"
 LOCAL_THEME_DIR="theme/${THEME_SUBDIR}"
 THEME_DIR="/boot/grub/themes"
 THEME_NAME=Xenlism-Arch
-THEME_REPO="git@github.com:fhanrath/Grub-themes.git"
+THEME_REPO="https://github.com/fhanrath/Grub-themes"
 cd /root/$SCRIPTHOME
 mkdir theme
 cd theme

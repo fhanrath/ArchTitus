@@ -29,17 +29,11 @@ cd ~/build/paru
 rustup toolchain install stable
 makepkg -si --noconfirm
 
-echo "test paru install"
-read paruinst
-
 cd ~/build
 git clone https://github.com/fhanrath/sway-save-outputs
 cd ~/build/sway-save-outputs
-./install.sh
+sudo ./install.sh
 cd ~/build
-
-echo "sway-save-outputs install"
-read paruinst
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -53,9 +47,6 @@ git clone https://github.com/safing/portmaster-packaging
 cd portmaster-packaging/linux
 makepkg -si --noconfirm
 
-echo "portmaster install"
-read portinst
-
 cd ~
 
 
@@ -66,9 +57,6 @@ echo -ne "
 "
 
 paru -S --noconfirm --needed - < ~/$SCRIPTHOME/pkg-files/aur-pkgs.txt
-
-echo "aur install"
-read aurinst
 
 case $sway in
     y|Y|yes|Yes|YES)
@@ -94,6 +82,7 @@ cd ~
 git clone "https://github.com/fhanrath/dotfiles"
 cd dotfiles
 ./copy_dotfiles.sh
+sudo ./copy_root_dotfiles.sh
 cd ~
 
 export PATH=$PATH:~/.local/bin

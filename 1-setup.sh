@@ -145,6 +145,8 @@ elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa intel-gpu-tools --needed --noconfirm
 elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa intel-gpu-tools --needed --noconfirm
+elif grep -E "Iris Xe Graphics" <<< ${gpu_type}; then
+    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa intel-gpu-tools --needed --noconfirm
 fi
 echo -ne "
 -------------------------------------------------------------------------
