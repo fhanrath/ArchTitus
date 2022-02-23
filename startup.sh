@@ -116,9 +116,9 @@ read ssd_drive
 
 case $ssd_drive in
     y|Y|yes|Yes|YES)
-    set_option mountoptions noatime,compress=zstd,ssd,commit=120
+    set_option mountoptions noatime,compress=zstd,ssd,commit=120;;
     n|N|no|NO|No)
-    set_option mountoptions noatime,compress=zstd,commit=120
+    set_option mountoptions noatime,compress=zstd,commit=120;;
     *) echo "Wrong option. Try again";drivessd;;
 esac
 }
@@ -172,9 +172,9 @@ read laptop
 
 case $laptop in
     y|Y|yes|Yes|YES)
-    set_option laptop yes
+    set_option laptop yes;;
     n|N|no|NO|No)
-    set_option laptop no
+    set_option laptop no;;
     *) echo "Wrong option. Try again";laptop;;
 esac
 }
@@ -201,9 +201,9 @@ read sway
 
 case $sway in
     y|Y|yes|Yes|YES)
-    set_option sway yes
+    set_option sway yes;;
     n|N|no|NO|No)
-    set_option sway no
+    set_option sway no;;
     *) echo "Wrong option. Try again";sway;;
 esac
 }
