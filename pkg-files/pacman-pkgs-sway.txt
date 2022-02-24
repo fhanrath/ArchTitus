@@ -10,3 +10,5 @@ wf-recorder
 slurp
 ranger
 swaylock
+nm-connction-editor
+qt5ct

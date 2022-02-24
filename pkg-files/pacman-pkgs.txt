@@ -125,3 +125,4 @@ tealdeer
 qt5-wayland
 qt6-wayland
 ungoogled-chromium
+veracrypt
