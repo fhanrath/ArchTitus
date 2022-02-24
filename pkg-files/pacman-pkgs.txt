@@ -3,7 +3,7 @@ wayland
 wayland-protocols
 glfw-wayland
 xorg-xwayland
-xorg-xlsclients # to list all apps running on xwayland ($ xlsclients)
+xorg-xlsclients
 egl-wayland
 alacritty
 pipewire
