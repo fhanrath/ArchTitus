@@ -8,6 +8,7 @@ egl-wayland
 alacritty
 pipewire
 pipewire-alsa
+easyeffects
 xdg-desktop-portal
 xdg-desktop-portal-gtk
 libpipewire02
