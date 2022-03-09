@@ -10,6 +10,7 @@ wf-recorder
 slurp
 ranger
 swaylock
+swayidle
 nm-connction-editor
 qt5ct
 wl-clipboard
