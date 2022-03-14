@@ -86,16 +86,12 @@ sudo
 swtpm
 traceroute
 ufw
-unrar
-unzip
 usbutils
 virt-manager
 virt-viewer
 wget
 which
 zsh
-zsh-syntax-highlighting
-zsh-autosuggestions
 rustup
 neovim
 nano
