@@ -50,7 +50,6 @@ grub-customizer
 gst-libav
 gst-plugins-good
 gst-plugins-ugly
-gwenview
 neofetch
 iptables-nft
 libdvdcss
@@ -74,7 +73,6 @@ os-prober
 p7zip
 pacman-contrib
 patch
-picom
 pkgconf
 print-manager
 python-notify2

@@ -11,3 +11,5 @@ nvm
 xcursor-breeze
 spotify-tui
 ttf-material-design-icons
+oh-my-zsh-plugin-autosuggestions
+zsh-syntax-highlighting-git
